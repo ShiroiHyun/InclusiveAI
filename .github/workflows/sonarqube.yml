@@ -39,8 +39,3 @@ jobs:
                        -Dsonar.projectName=InclusiveAI \
                        -Dsonar.host.url=http://localhost:9000 \
                        -Dsonar.login=${{ secrets.SONAR_TOKEN }}  # Usa el token del secreto de GitHub
-
-    - name: Upload SonarQube Quality Gate status
-      uses: SonarSource/sonarcloud-github-action@v1
-      with:
-        token: ${{ secrets.SONAR_TOKEN }}  # Token de SonarQube
