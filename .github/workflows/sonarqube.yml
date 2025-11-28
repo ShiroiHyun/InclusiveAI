@@ -31,11 +31,10 @@ jobs:
 
     - name: Run SonarQube Scanner
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Token de SonarQube como secreto
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Usa el token de SonarQube como variable de entorno
       run: |
-        # Si no tienes el sonar-scanner instalado, puedes instalarlo con npm o ejecutarlo directamente
-        npm install -g sonar-scanner
+        # Ejecutar sonar-scanner usando el token de SonarQube de manera segura
         sonar-scanner -Dsonar.projectKey=InclusiveAI \
                        -Dsonar.projectName=InclusiveAI \
                        -Dsonar.host.url=http://localhost:9000 \
-                       -Dsonar.login=${{ secrets.SONAR_TOKEN }}  # Usa el token del secreto de GitHub
+                       -Dsonar.login=$SONAR_TOKEN  # Usar la variable de entorno
